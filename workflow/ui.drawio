@@ -1,0 +1,49 @@
+<mxfile host="65bd71144e">
+    <diagram id="g8uH-SvTTmfDjy2C15T0" name="Page-1">
+        <mxGraphModel dx="468" dy="490" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.android.phone2;strokeColor=#c0c0c0;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="40" width="200" height="390" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.android.phone2;strokeColor=#c0c0c0;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="40" width="200" height="390" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.android.contact_badge_focused;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="85" y="110" width="70" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="kittiponapp" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="90" y="190" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Pressed" style="rounded=1;html=1;shadow=0;dashed=0;whiteSpace=wrap;fontSize=10;fillColor=#999999;align=center;strokeColor=#666666;fontColor=#ffffff;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="67.25" y="320" width="105.5" height="16.88" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="User" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="220" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Password" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="260" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="" style="strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;fillColor=#444444;strokeColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="257.5" y="364" width="185" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Profile" style="strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.anchor;fontStyle=1;fontColor=#ffffff;" vertex="1" parent="9">
+                    <mxGeometry x="112.5" width="46.25" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="Data" style="strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;fontStyle=1;fillColor=#0099cc;strokeColor=none;fontColor=#ffffff;" vertex="1" parent="9">
+                    <mxGeometry x="22.5" width="46.25" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;fillColor=#33b5e5;strokeColor=none;" vertex="1" parent="11">
+                    <mxGeometry y="27" width="46.25" height="3" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.action_bar;fillColor=#E6E6E6;strokeColor=#c0c0c0;strokeWidth=2;whiteSpace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="257.5" y="70" width="185" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="470" y="70" width="120" height="120" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
