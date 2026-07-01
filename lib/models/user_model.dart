@@ -8,7 +8,7 @@ class UserModel {
   final String UserType;
   final String UserTypeName;
   final String ProvCode;
-  final List<String> AssignCodes;
+  final List<Map<String, dynamic>> AssignCodes;
   UserModel({
     required this.Username,
     required this.Fullname,
@@ -17,7 +17,7 @@ class UserModel {
     required this.ProvCode,
     required this.AssignCodes,
   });
-  
+
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,7 +37,7 @@ class UserModel {
       UserType: (map['UserType'] ?? '') as String,
       UserTypeName: (map['UserTypeName'] ?? '') as String,
       ProvCode: (map['ProvCode'] ?? '') as String,
-      AssignCodes: List<String>.from(map['AssignCodes'] ?? []),
+      AssignCodes: List<Map<String, dynamic>>.from((map['AssignCodes'] ?? []),),
     );
   }
 

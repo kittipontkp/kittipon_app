@@ -1,8 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kittipon_app/cores/app_http_override.dart';
 import 'package:kittipon_app/states/login_page.dart';
 
-void main(){
+Future<void> main() async {
+
+HttpOverrides.global = AppHttpOverride();
+
 
   runApp(const MyApp());
 }

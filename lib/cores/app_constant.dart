@@ -11,7 +11,7 @@ class AppConstant {
     return TextStyle(fontSize: 36, fontWeight: FontWeight.w700);
   }
 
-  static TextStyle h3Style() {
-    return TextStyle(fontSize: 16, fontWeight: FontWeight.normal);
+  static TextStyle h3Style({FontWeight? fontWeight}) {
+    return TextStyle(fontSize: 16, fontWeight: fontWeight ?? FontWeight.normal);
   }
 }

@@ -1,34 +1,68 @@
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:kittipon_app/models/assign_code_model.dart';
+import 'package:kittipon_app/models/building_code_model.dart';
 import 'package:kittipon_app/models/user_model.dart';
+import 'package:kittipon_app/states/main_home.dart';
 
 class AppService {
+
+  Future<List<BuildingCodeModel>> findBuildList({required String assignCode}) async {
+
+    List<BuildingCodeModel> buildingCodeModels = [];
+
+    return buildingCodeModels;
+
+  }
+
+  Future<List<AssignCodeModel>> findListAssignCodeModel({
+    required UserModel userModel,
+  }) async {
+    List<AssignCodeModel> assignCodeModels = [];
+
+    for (var element in userModel.AssignCodes) {
+      AssignCodeModel assignCodeModel = AssignCodeModel.fromMap(element);
+      assignCodeModels.add(assignCodeModel);
+    }
+
+return assignCodeModels;
+
+  }
+
   Future<void> checkLogin({
     required String username,
     required String password,
     required BuildContext context,
   }) async {
     try {
-      String urlAPI = 'https://tns.nso.go.th/hh70/API/authenticate.php';
+      String urlAPI = 'https://tns.nso.go.th/hh70/API/v2/authenticate.php';
 
       Map<String, dynamic> body = {};
       body['username'] = username;
       body['password'] = password;
 
-      Dio objectDio = Dio();
+      dio.Dio objectDio = dio.Dio();
       objectDio.options.headers['Content-Type'] = 'multipart/form-data';
 
-      var response = await objectDio.post(urlAPI, data: FormData.fromMap(body));
+      var response = await objectDio.post(
+        urlAPI,
+        data: dio.FormData.fromMap(body),
+      );
 
       debugPrint('response ===> ${response.toString()}');
 
       UserModel userModel = UserModel.fromMap(response.data['data']);
 
+      debugPrint('AssignCodes ===> ${userModel.AssignCodes}');
+
+      Get.offAll(MainHome(userModel: userModel));
+
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
             'Welcome ${userModel.Fullname}',
-            style: TextStyle(color: Colors.white ,fontWeight: FontWeight.w700),
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
           ),
           backgroundColor: Colors.pinkAccent,
           duration: Duration(seconds: 10),
@@ -37,6 +71,17 @@ class AppService {
     } on Exception catch (e) {
       // TODO
       debugPrint('e ===> ${e.toString()}');
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'ไม่สามารถเข้าสู่ระบบได้ กรุณาลองใหม่อีกครั้ง',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+          ),
+          backgroundColor: Colors.red,
+          duration: Duration(seconds: 10),
+        ),
+      );
     }
   }
 }
