@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,13 +9,33 @@ import 'package:kittipon_app/models/user_model.dart';
 import 'package:kittipon_app/states/main_home.dart';
 
 class AppService {
-
-  Future<List<BuildingCodeModel>> findBuildList({required String assignCode}) async {
-
+  Future<List<BuildingCodeModel>> findBuildList({
+    required String assignCode,
+    required String cookieHeader,
+  }) async {
     List<BuildingCodeModel> buildingCodeModels = [];
 
-    return buildingCodeModels;
+    String urlAPI = 'https://tns.nso.go.th/hh70/API/building_list.php';
 
+    dio.Dio objectDio = dio.Dio();
+
+    var response = await objectDio.request(
+      '$urlAPI?assign_code=$assignCode',
+      options: dio.Options(method: 'GET', headers: {'Cookie': cookieHeader}),
+    );
+    // debugPrint('status ==> ${response.statusCode()}');
+    debugPrint('response ==> ${response.toString()}');
+
+    if (response.data['data'].isEmpty) {
+      return [];
+    } else {
+      for (var element in response.data['data']) {
+        BuildingCodeModel model = BuildingCodeModel.fromMap(element);
+        buildingCodeModels.add(model);
+      }
+    }
+
+    return buildingCodeModels;
   }
 
   Future<List<AssignCodeModel>> findListAssignCodeModel({
@@ -26,8 +48,7 @@ class AppService {
       assignCodeModels.add(assignCodeModel);
     }
 
-return assignCodeModels;
-
+    return assignCodeModels;
   }
 
   Future<void> checkLogin({
@@ -50,13 +71,26 @@ return assignCodeModels;
         data: dio.FormData.fromMap(body),
       );
 
+      final cookies = response.headers['set-cookie'];
+      debugPrint('## cookie ==> $cookies');
+
+      List<String> trueCookies = <String>[];
+      for (var element in cookies!) {
+        trueCookies.add(element.split(';').first);
+      }
+      debugPrint('## trueCookies ==> $trueCookies');
+
+      final cookieHeader = trueCookies.join('; ');
+
+      debugPrint('## cookieHeader ===> $cookieHeader');
+
       debugPrint('response ===> ${response.toString()}');
 
       UserModel userModel = UserModel.fromMap(response.data['data']);
 
       debugPrint('AssignCodes ===> ${userModel.AssignCodes}');
 
-      Get.offAll(MainHome(userModel: userModel));
+      Get.offAll(MainHome(userModel: userModel, cookieHeader: cookieHeader));
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(

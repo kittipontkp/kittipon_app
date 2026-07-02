@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:kittipon_app/cores/app_constant.dart';
 
+import 'package:kittipon_app/cores/app_constant.dart';
 import 'package:kittipon_app/cores/app_service.dart';
 import 'package:kittipon_app/models/assign_code_model.dart';
 import 'package:kittipon_app/models/user_model.dart';
@@ -12,9 +12,14 @@ import 'package:kittipon_app/states/detail_assign_code.dart';
 import 'package:kittipon_app/widgets/button_widget.dart';
 
 class AssignBody extends StatelessWidget {
-  const AssignBody({Key? key, required this.userModel}) : super(key: key);
+  const AssignBody({
+    Key? key,
+    required this.userModel,
+    required this.cookieHeader,
+  }) : super(key: key);
 
   final UserModel userModel;
+  final String cookieHeader;
 
   @override
   Widget build(BuildContext context) {
@@ -78,9 +83,12 @@ class AssignBody extends StatelessWidget {
                       children: [
                         ButtonWidget(
                           onPressed: () {
-
-
-                            Get.to(DetailAssignCode(assignCode: assignCodeModels[index].AssignCode));
+                            Get.to(
+                              DetailAssignCode(
+                                assignCode: assignCodeModels[index].AssignCode,
+                                cookieHeader: cookieHeader,
+                              ),
+                            );
                           },
                           text: 'More Detail',
                           type: GFButtonType.outline,
